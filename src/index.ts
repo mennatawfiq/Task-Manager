@@ -3,8 +3,8 @@ import path from 'path';
 import tasks from './routers/tasks';
 import { connectDB } from './db/connect';
 import dotenv from 'dotenv';
-import { notFound } from './middlewares/notFound';
-import { errHandler } from './middlewares/errorHandler';
+import { notFound } from './middlewares/not-found';
+import { errHandler } from './middlewares/error-handler';
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(express.static(path.resolve(__dirname, './public'))); app.use(express.js
 
 dotenv.config();
 
-const port = process.env['PORT'];
+const port = process.env['PORT'] || 4000;
 
 app.use('/api/v1/tasks', tasks);
 app.use(notFound);
