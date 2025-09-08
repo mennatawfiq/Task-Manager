@@ -1,10 +1,13 @@
 import express from 'express';
+import path from 'path';
 import tasks from './routers/tasks';
 import { connectDB } from './db/connect';
 import dotenv from 'dotenv';
 
 const app = express();
-app.use(express.json());
+
+app.use(express.static(path.resolve(__dirname, './public'))); app.use(express.json());
+
 dotenv.config();
 
 const port = process.env['PORT'];
